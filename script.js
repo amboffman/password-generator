@@ -8,6 +8,7 @@ var numbers = ["0", "1", "2", "3","4","5","6","7","8","9"];
 var specialCharacters = ["!", "@", "#", "$", "%", "^", "&", "*"];
 var passwordArray =[];
 var randomPasswordArray =[];
+var charactersAlreadyAdded = 0;
 var includeLowerCase = false;
 var includeUpperCase = false;
 var includeSpecial = false;
@@ -71,7 +72,9 @@ function lowerCaseCharacterCheck(){
     for(i=0;i<lowerCaseLetters.length; i++){
       passwordArray.push(lowerCaseLetters[i]);
       includeLowerCase = true;
-      }
+    }
+    randomPasswordArray.push(lowerCaseLetters[Math.floor(Math.random()*lowerCaseLetters.length)]);
+      charactersAlreadyAdded++;
   }
 }
 // then confirm if they want special characters
@@ -82,7 +85,9 @@ function specialCharacterCheck(){
     for(j=0;j<specialCharacters.length; j++){
       passwordArray.push(specialCharacters[j]);
       includeSpecial = true;
-      }
+    }
+    randomPasswordArray.push(specialCharacters[Math.floor(Math.random()*specialCharacters.length)]);
+      charactersAlreadyAdded++;
   }
 }
 // then confirm if they want upper case letters
@@ -94,6 +99,8 @@ function upperCaseCharacterCheck(){
       passwordArray.push(upperCaseLetters[k]);
       includeUpperCase = true;
       }
+      randomPasswordArray.push(upperCaseLetters[Math.floor(Math.random()*upperCaseLetters.length)]);
+      charactersAlreadyAdded++;
   }
 }
 // then confirm if they want numerics
@@ -104,13 +111,15 @@ function numericCharacterCheck(){
     for(l=0;l<numbers.length; l++){
       passwordArray.push(numbers[l]);
       includeNumber = true;
-      }
+    }
+    randomPasswordArray.push(numbers[Math.floor(Math.random()*numbers.length)]);
+      charactersAlreadyAdded++;
   }
 }
 // validate at least one criteria has been selected
 function atLeastOneCritera(){
   if(includeNumber||includeSpecial||includeUpperCase||includeLowerCase){
-    for(m=0;m<numPasswordCharacters; m++){
+    for(m=0;m<(numPasswordCharacters-charactersAlreadyAdded); m++){
     // add the desired password length of characters from the password array into random password array
       randomPasswordArray.push(passwordArray[Math.floor(Math.random()*passwordArray.length)]);
     }
@@ -174,3 +183,4 @@ console.log("Password has number: " + passwordHasNumber);
 console.log("Include Number?: " + includeNumber);
 console.log("Include Uppercase: " + includeUpperCase);
 console.log("Random Password Length: " + randomPasswordArray.length);
+console.log(charactersAlreadyAdded);
