@@ -2,10 +2,10 @@
 var generateBtn = document.querySelector("#generate");
 var passwordCharacterMax = 128;
 var passwordCharacterMin = 1;
-var lowerCaseLetters = ["a","b", "c"];
-var upperCaseLetters = ["A", "B", "C"];
-var numbers = ["1","2","3"];
-var specialCharacters = ["!", "@", "#"];
+var lowerCaseLetters = ["a", "b", "c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+var upperCaseLetters = ["A", "B", "C", "D", "E", "F","G", "H", "I", "J", "K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+var numbers = ["0", "1", "2", "3","4","5","6","7","8","9"];
+var specialCharacters = ["!", "@", "#", "$", "%", "^", "&", "*"];
 var passwordArray =[];
 var randomPasswordArray =[];
 var includeLowerCase = false;
@@ -16,7 +16,7 @@ var passwordHasLowerCase = false;
 var passwordHasUpperCase = false;
 var passwordHasSpecial = false;
 var passwordHasNumber = false;
-var finalPassword = [];
+// var arrayOfFunctions = [lowerCaseCharacterCheck(), specialCharacterCheck(), upperCaseCharacterCheck(), atLeastOneCritera(), arrayCriteriaMatch()];
 
 
 
@@ -35,7 +35,8 @@ function writePassword() {
 // TODO: Write code so the generatePassword returns a string for a password
 // which meets the requirements in the instructions.
 function generatePassword() {
-  return "";
+
+  return "finalPassword";
 }
 // on click, prompt user to input desired password length
 var numPasswordCharacters = prompt("How many characters would you like your password to be?");
@@ -51,7 +52,6 @@ if(numPasswordCharacters>=passwordCharacterMin && numPasswordCharacters<=passwor
   numericCharacterCheck();
   // validate at least one criteria has been selected
   atLeastOneCritera();
-  // add the desired password length of characters from the password array into random password array
   // verify one of each criteria is in random password array
   arrayCriteriaMatch();
   // verify password length matches requested length
@@ -110,19 +110,17 @@ function numericCharacterCheck(){
 // validate at least one criteria has been selected
 function atLeastOneCritera(){
   if(includeNumber||includeSpecial||includeUpperCase||includeLowerCase){
-    for(m=0;m<passwordArray.length; m++){
+    for(m=0;m<numPasswordCharacters; m++){
     // add the desired password length of characters from the password array into random password array
       randomPasswordArray.push(passwordArray[Math.floor(Math.random()*passwordArray.length)]);
-    }
-    for(n=0;n<((numPasswordCharacters/2)-1); n++){
-      finalPassword.push(randomPasswordArray[n]);
     }
     }
   else{
     alert("Please choose at least one character type to include in your password.")
   }
-  }
+}
 
+// check if random password array has all the wanted criteria
 function arrayCriteriaMatch(){
   if(includeLowerCase){
     for(o=0; o<lowerCaseLetters.length;o++){
@@ -130,7 +128,6 @@ function arrayCriteriaMatch(){
         passwordHasLowerCase = true;
       }
       else{
-        atLeastOneCritera();
       }
     }
   }
@@ -139,12 +136,16 @@ function arrayCriteriaMatch(){
       if(randomPasswordArray.includes(upperCaseLetters[p])){
         passwordHasUpperCase = true;
       }
+      else{
+      }
     }
   }
   if(includeSpecial){
     for(q=0; q<specialCharacters.length;q++){
       if(randomPasswordArray.includes(specialCharacters[q])){
         passwordHasSpecial = true;
+      }
+      else{
       }
     }
   }
@@ -153,10 +154,13 @@ function arrayCriteriaMatch(){
       if(randomPasswordArray.includes(numbers[r])){
         passwordHasNumber = true;
       }
+      else{
+
+      }
     }
   }
   }
-// loop until one of each criteria is in the randomly  password array
+// if it doesn't have all the criteria, randomize and check again
 // display the string in the box
 
 console.log("passwordArray: " + passwordArray);
@@ -169,5 +173,4 @@ console.log("Password has special character: " + passwordHasSpecial);
 console.log("Password has number: " + passwordHasNumber);
 console.log("Include Number?: " + includeNumber);
 console.log("Include Uppercase: " + includeUpperCase);
-console.log("Final Password: " + finalPassword);
-console.log("Final Password Length: " + finalPassword.length);
+console.log("Random Password Length: " + randomPasswordArray.length);
