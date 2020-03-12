@@ -36,7 +36,7 @@ function writePassword() {
 // which meets the requirements in the instructions.
 function generatePassword() {
 
-  return "finalPassword";
+  return (randomPasswordArray);
 }
 // on click, prompt user to input desired password length
 var numPasswordCharacters = prompt("How many characters would you like your password to be?");
