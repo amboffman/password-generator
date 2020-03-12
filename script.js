@@ -6,7 +6,13 @@ var lowerCaseLetters = ["a","b", "c"];
 var upperCaseLetters = ["A", "B", "C"];
 var numbers = ["1","2","3"];
 var specialCharacters = ["!", "@", "#"];
-var passwordArray =[];
+var passwordArray =[1];
+var randomPasswordArray =[];
+var includeLowerCase = false;
+var includeUpperCase = false;
+var includeSpecial = false;
+var includeNumber = false;
+
 
 
 
@@ -35,6 +41,7 @@ if(numPasswordCharacters>=passwordCharacterMin && numPasswordCharacters<=passwor
   specialCharacterCheck();
   upperCaseCharacterCheck();
   numericCharacterCheck();
+  atLeastOneCritera();
 
 }
 else {
@@ -48,6 +55,7 @@ function lowerCaseCharacterCheck(){
   if(lowerCaseLettersWanted){
     for(i=0;i<lowerCaseLetters.length; i++){
       passwordArray.push(lowerCaseLetters[i]);
+      includeLowerCase = true;
       }
   }
 }
@@ -58,6 +66,7 @@ function specialCharacterCheck(){
   if(specialCharactersWanted){
     for(j=0;j<specialCharacters.length; j++){
       passwordArray.push(specialCharacters[j]);
+      includeSpecial = true;
       }
   }
 }
@@ -68,6 +77,7 @@ function upperCaseCharacterCheck(){
   if(upperCaseLettersWanted){
     for(k=0;k<upperCaseLetters.length; k++){
       passwordArray.push(upperCaseLetters[k]);
+      includeUpperCase = true;
       }
   }
 }
@@ -78,13 +88,24 @@ function numericCharacterCheck(){
   if(numbersWanted){
     for(l=0;i<numbers.length; l++){
       passwordArray.push(numbers[l]);
+      includeNumber = true;
       }
   }
 }
 // validate at least one criteria has been selected
-// add the desired password legnth of characters from the password array into random password array
+function atLeastOneCritera(){
+  if(includeNumber||includeSpecial||includeUpperCase||includeLowerCase){
+    for(m=0;m<numPasswordCharacters;m++){
+    // add the desired password legnth of characters from the password array into random password array
+      randomPasswordArray.push(passwordArray[Math.floor(Math.random()*passwordArray.length)]);
+    }
+  }
+}
 // verify one of each criteria is in random password array
 // loop until one of each criteria is in the randomly  password array
 // display the string in the box
 
-console.log(passwordArray);
+console.log("passwordArray: " + passwordArray);
+console.log("RandompasswordArray: " + randomPasswordArray);
+console.log(includeLowerCase);
+console.log(numPasswordCharacters);
