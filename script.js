@@ -1,7 +1,5 @@
 // GLOBAL VARIABLES
 var generateBtn = document.querySelector("#generate");
-var passwordCharacterMax = 128;
-var passwordCharacterMin = 8;
 var lowerCaseLetters = ["a", "b", "c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 var upperCaseLetters = ["A", "B", "C", "D", "E", "F","G", "H", "I", "J", "K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 var numbers = ["0", "1", "2", "3","4","5","6","7","8","9"];
@@ -34,7 +32,7 @@ function generatePassword() {
   var userChoice = prompt("How many characters would you like your password to be?");
   numPasswordCharacters=userChoice;
   //verify that the password is between 8 and 128 characters
-  if(numPasswordCharacters>=passwordCharacterMin && numPasswordCharacters<=passwordCharacterMax){
+  if(numPasswordCharacters>= 8 && numPasswordCharacters<=128){
     // then confirm if they want lower case characters
     lowerCaseCharacterCheck();
     // then confirm if they want special characters
@@ -124,8 +122,6 @@ function atLeastOneCritera(){
   // reset variables for next generation
   function newClick(){
   generateBtn = document.querySelector("#generate");
-  passwordCharacterMax = 128;
-  passwordCharacterMin = 1;
   lowerCaseLetters = ["a", "b", "c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
   upperCaseLetters = ["A", "B", "C", "D", "E", "F","G", "H", "I", "J", "K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
   numbers = ["0", "1", "2", "3","4","5","6","7","8","9"];
