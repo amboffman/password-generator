@@ -49,7 +49,7 @@ function generatePassword() {
   // If password length is not between 8 and 128
   else {
     // prompt user to input password between 8 and 128
-    alert("Please input a number between " + passwordCharacterMin +" and " + passwordCharacterMax);
+    alert("Please input a number between " + 8 +" and " + 128);
     // produce password to screen
   }return (randomPasswordArray);
 }
