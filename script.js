@@ -55,6 +55,7 @@ function generatePassword() {
     // verify one of each criteria is in random password array
     arrayCriteriaMatch();
     // verify password length matches requested length
+    randomPasswordArray = randomPasswordArray.join('');
     // produce password to screen
   }
   // If password length is not between 8 and 128
